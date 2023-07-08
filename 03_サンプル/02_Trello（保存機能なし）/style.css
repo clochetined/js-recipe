@@ -1,15 +1,19 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   overflow: hidden;
 }
+
 header {
   position: absolute;
   top: 0px;
   width: 100%;
 }
+
 .header-title {
   display: flex;
   justify-content: center;
@@ -19,6 +23,7 @@ header {
   background-color: #0064a5;
   color: #7fb1d2;
 }
+
 .main-container {
   display: flex;
   flex-wrap: nowrap;
@@ -28,6 +33,7 @@ header {
   overflow-x: auto;
   background-color: #0076c2;
 }
+
 .list-container {
   min-width: 250px;
   width: 250px;
@@ -35,20 +41,23 @@ header {
   border-radius: 4px;
   background-color: #e2e4e6;
 }
-.list-container:nth-child(n + 2) {
+.list-container:nth-child(n+2) {
   margin-left: 8px;
 }
+
 .list-header {
   height: 60px;
   padding: 8px 0px 0px 4px;
   font-weight: bold;
   font-size: 0.9em;
 }
+
 .cards-container {
   max-height: calc(100vh - 200px);
   margin-top: 4px;
   overflow-y: auto;
 }
+
 .card {
   position: relative;
   padding: 4px;
@@ -76,7 +85,7 @@ header {
   right: 4px;
   z-index: 16;
   opacity: 0.5;
-  color: #f00;
+  color: red;
 }
 .card:hover .delete:after {
   content: "削除";
@@ -84,6 +93,7 @@ header {
 .card:hover .delete:hover {
   opacity: 1;
 }
+
 .input-container {
   display: flex;
   justify-content: space-between;
@@ -112,11 +122,14 @@ header {
   background-color: #2ab643;
   border-radius: 4px;
   border-bottom: 1px solid #2aa138;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .input-container .input-button:active {
   transform: translateY(2px);
 }
+
 .list-footer {
   margin-top: 8px;
-}
+}/*# sourceMappingURL=style.css.map */
