@@ -2,3 +2,24 @@
   1. "!"と入力して、tabキーを押し、HTMLの雛形を作成する。
   2. script要素でmain.jsを読み込む。
 -->
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h2>カウンター</h2>
+      <p>
+        現在のカウント数：
+        <span id="count-number">0</span>
+      </p>
+      <button id="plus-one">+1</button>
+      <button id="minus-one">-1</button>
+      <button id="reset">リセット</button>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
