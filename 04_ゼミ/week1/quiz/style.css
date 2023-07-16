@@ -1,0 +1,12 @@
+img {
+  width: 100px;
+  height: 100px;
+}
+
+#display {
+  position: absolute;
+  img {
+    position: relative;
+    left: 0;
+  }
+}
