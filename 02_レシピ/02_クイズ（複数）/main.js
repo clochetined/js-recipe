@@ -2,6 +2,7 @@ const quizText = document.getElementById("quiz-text")
 const quizImage = document.getElementById("quiz-image")
 const container = document.getElementById("quiz-container")
 const feedback = document.getElementById("feedback")
+const nextbtn = document.getElementById("next-btn")
 
 // クイズの内容
 const quizzes = [
@@ -108,7 +109,17 @@ const reloadQuiz = function (quizNumber) {
         alert("正解です！")
         const nextQuizButton = document.createElement("button")
         nextQuizButton.textContent = "次の問題に挑戦する"
-        feedback.appendChild(nextQuizButton)
+        nextbtn.append(nextQuizButton)
+        nextQuizButton.onclick = function () {
+          // 次の問題に進むためのボタンを消す
+          while (container.firstChild) {
+            container.removeChild(container.firstChild)
+          }
+          feedback.textContent = ""
+          nextQuizButton.remove()
+          // 次の問題に進む
+          reloadQuizfuc(quizNumber + 1)
+        }
       }
     }
   }
@@ -117,6 +128,10 @@ const reloadQuiz = function (quizNumber) {
 const choose = function (quizNumber, choiceNumber) {
   // フィードバックを表示
   feedback.textContent = quizzes[quizNumber].choices[choiceNumber].feedback
+}
+
+const reloadQuizfuc = (quizNumber) => {
+  reloadQuiz(quizNumber)
 }
 
 // reloadQuiz関数 を実行して、クイズを画面に表示する
