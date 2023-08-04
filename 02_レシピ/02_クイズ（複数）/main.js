@@ -106,7 +106,6 @@ const reloadQuiz = function (quizNumber) {
       // 正解かどうかチェック
       choose(quizNumber, i)
       if (quiz.choices[i].isCorrect === true) {
-        alert("正解です！")
         const nextQuizButton = document.createElement("button")
         nextQuizButton.textContent = "次の問題に挑戦する"
         nextbtn.append(nextQuizButton)
