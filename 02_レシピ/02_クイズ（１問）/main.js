@@ -7,20 +7,21 @@ const feedback = document.getElementById("feedback")
 
 // クイズの内容
 const quiz = {
-  text: "この中で、正しいのはどれ？",
-  image: "images/Ganymede.jpg",
+  text: "この星の名前は何でしょう？",
+  image: "Ganymede.jpg",
   choices: [
     {
       text: "ゴリアテ",
-      feedback: "残念！ゴリアテは木星の衛星の名前です。",
-    },
-    {
-      text: "ガニメデ",
-      feedback: "正解！ガニメデは木星の衛星の名前です！",
+      feedback:
+        "残念！ゴリアテは、旧約聖書に登場するダビデに石で殺される巨人だよ。",
     },
     {
       text: "ゼニガメ",
-      feedback: "ゼニガメは、クサガメまたはニホンイシガメの幼体だよ。",
+      feedback: "残念！ゼニガメは、クサガメまたはニホンイシガメの幼体だよ。",
+    },
+    {
+      text: "ガニメデ",
+      feedback: "正解！ガニメデは、木星の第三惑星だよ！",
     },
   ],
 }
@@ -31,7 +32,7 @@ const reloadQuiz = function () {
   quizText.textContent = "Q. " + quiz.text
 
   // 画像を表示
-  quizImage.src = quiz.image
+  quizImage.src = "./images/" + quiz.image
 
   // 選択肢（ボタン）の中身を表示
   choice1.textContent = quiz.choices[0].text
@@ -39,23 +40,24 @@ const reloadQuiz = function () {
   choice3.textContent = quiz.choices[2].text
 }
 
-// 正誤判定のための定数
+// choiceNumber番目の選択肢を選択
 const choose = function (choiceNumber) {
+  // フィードバックを表示
   feedback.textContent = quiz.choices[choiceNumber].feedback
 }
 
-// choiceNumber が 1 のとき choice1 が押されたことになる
 choice1.onclick = function () {
-  // 正誤判定
+  // 0 番目の選択肢を選択
   choose(0)
 }
 choice2.onclick = function () {
-  // 正誤判定
+  // 1 番目の選択肢を選択
   choose(1)
 }
 choice3.onclick = function () {
-  // 正誤判定
+  // 2 番目の選択肢を選択
   choose(2)
 }
 
+// reloadQuiz関数 を実行して、クイズを画面に表示する
 reloadQuiz()
