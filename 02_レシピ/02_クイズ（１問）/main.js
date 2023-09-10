@@ -1,26 +1,33 @@
 const quizText = document.getElementById("quiz-text")
 const quizImage = document.getElementById("quiz-image")
-const choice1 = document.getElementById("choice-1")
-const choice2 = document.getElementById("choice-2")
-const choice3 = document.getElementById("choice-3")
+const container = document.getElementById("quiz-container")
 const feedback = document.getElementById("feedback")
 
 // クイズの内容
 const quiz = {
-  text: "この中で、正しいのはどれ？",
-  image: "images/Ganymede.jpg",
+  text: "この星の名前は何でしょう？",
+  image: "Ganymede.jpg",
   choices: [
     {
       text: "ゴリアテ",
-      feedback: "残念！ゴリアテは木星の衛星の名前です。",
-    },
-    {
-      text: "ガニメデ",
-      feedback: "正解！ガニメデは木星の衛星の名前です！",
+      feedback:
+        "残念！ゴリアテは、旧約聖書に登場するダビデに石で殺される巨人だよ。",
     },
     {
       text: "ゼニガメ",
-      feedback: "ゼニガメは、クサガメまたはニホンイシガメの幼体だよ。",
+      feedback: "残念！ゼニガメは、クサガメまたはニホンイシガメの幼体だよ。",
+    },
+    {
+      text: "ガニメデ",
+      feedback: "正解！ガニメデは、木星の第三惑星だよ！",
+    },
+    {
+      text: "メガロテ",
+      feedback: "残念！メガロテは、ガンダムの敵だよ。",
+    },
+    {
+      text: "ガンダム",
+      feedback: "残念！ガンダムは、ガンダムの主人公だよ。",
     },
   ],
 }
@@ -31,31 +38,29 @@ const reloadQuiz = function () {
   quizText.textContent = "Q. " + quiz.text
 
   // 画像を表示
-  quizImage.src = quiz.image
+  quizImage.src = "./images/" + quiz.image
 
   // 選択肢（ボタン）の中身を表示
-  choice1.textContent = quiz.choices[0].text
-  choice2.textContent = quiz.choices[1].text
-  choice3.textContent = quiz.choices[2].text
+  for (let i = 0; i < quiz.choices.length; i++) {
+    const button = document.createElement("button")
+    button.className = "choice-" + (i + 1)
+    button.textContent = quiz.choices[i].text
+
+    container.append(button)
+
+    // ボタンをクリックしたら正誤判定
+    button.onclick = function () {
+      // 正解かどうかチェック
+      choose(i)
+    }
+  }
 }
 
-// 正誤判定のための定数
+// choiceNumber番目の選択肢を選択
 const choose = function (choiceNumber) {
+  // フィードバックを表示
   feedback.textContent = quiz.choices[choiceNumber].feedback
 }
 
-// choiceNumber が 1 のとき choice1 が押されたことになる
-choice1.onclick = function () {
-  // 正誤判定
-  choose(0)
-}
-choice2.onclick = function () {
-  // 正誤判定
-  choose(1)
-}
-choice3.onclick = function () {
-  // 正誤判定
-  choose(2)
-}
-
+// reloadQuiz関数 を実行して、クイズを画面に表示する
 reloadQuiz()
